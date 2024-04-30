@@ -32,7 +32,7 @@ jobs:
     #       aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
     #   run: python3 collector_analyser/sqs_util_test.py
 
-    - name: Copy Code files to EC2 and run them
+    - name: Copy Code files to EC2
       run: |
         mkdir -p ~/.ssh
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
@@ -40,9 +40,14 @@ jobs:
         SSH_OPTIONS="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa"
         scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa collector_analyser/*.py ubuntu@${{ secrets.EC2_HOST }}:/home/ubuntu/
         scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ./requirements.txt ubuntu@${{ secrets.EC2_HOST }}:/home/ubuntu/ 
-        python3 flask_analyser.py
-        pkill gunicorn
-        # python3 flask_collector.py
+        
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        EC2_HOST: ${{ secrets.EC2_HOST }}
+
+    - name: Run Analyser on EC2
+      run: |
+        ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.EC2_HOST }} 'cd /home/ubuntu && python3 flask_analyser.py'
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         EC2_HOST: ${{ secrets.EC2_HOST }}
