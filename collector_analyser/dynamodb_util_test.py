@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch, MagicMock
-import collector_analyser.dynamodb_util as dynamodb_util
+import dynamodb_util as dynamodb_util
 
 class TestDynamoDBUtil(unittest.TestCase):
     @patch('dynamodb_util.dynamodb.put_item')
