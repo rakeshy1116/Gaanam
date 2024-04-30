@@ -1,0 +1,12 @@
+/* .welcome-text {
+    color: #1DB954;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+  } */
+
+  .welcome-text {
+    background-color: white;
+    color: #1DB954;
+    padding: 10px;
+    border-radius: 5px;
+  }

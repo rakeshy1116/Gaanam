@@ -1,0 +1,7 @@
+.playButton{
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    background-color: #1DB954;
+    transition: background-color 0.3s;
+}

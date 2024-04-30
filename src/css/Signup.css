@@ -1,0 +1,38 @@
+.signup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #121212;
+    color: white;
+  }
+  
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+  }
+  
+  .signup-form label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  .signup-input, .signup-submit {
+    padding: 10px;
+    border-radius: 30px;
+    border: none;
+    width: 100%;
+  }
+  
+  .signup-submit {
+    background-color: #1DB954;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .signup-submit:hover {
+    background-color: #1ED760;
+  }

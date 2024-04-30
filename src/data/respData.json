@@ -1,0 +1,22 @@
+{
+    "Arijit Singh" : {
+        "artist_name":"Arijit Singh",
+        "artist_popularity":"89",
+        "artist_url":"https://open.spotify.com/artist/4YRxDV8wJFPHPTeXepOstw"
+    },
+    "Taylor Swift" : {
+        "artist_name":"Taylor Swift",
+        "artist_popularity":"100",
+        "artist_url":"https://open.spotify.com/artist/06HL4z0CvFAxyc27GXpf02"
+    },
+    "Ed Sheeran" : {
+        "artist_name":"Ed Sheeran",
+        "artist_popularity":"87",
+        "artist_url":"https://open.spotify.com/artist/6eUKZXaKkcviH0Ku9w2n3V"
+    },
+    "Shreya Ghoshal" : {
+        "artist_name":"Shreya Ghoshal",
+        "artist_popularity":"82",
+        "artist_url":"https://open.spotify.com/artist/0oOet2f43PA68X5RxKobEy"
+    }
+}
