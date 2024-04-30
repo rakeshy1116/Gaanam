@@ -19,8 +19,14 @@ jobs:
     - name: Install Dependencies
       run: pip install -r requirements.txt
 
-    - name: Test Collector and Analyzer files
-      run: python3 flask_collector_test.py
+    - name: Test collector
+      run: python3 collector_analyser/flask_collector_test.py
+    - name: Test analyser
+      run: python3 collector_analyser/flask_analyser_test_mock.py
+    - name: Test dynamodb_util
+      run: python3 collector_analyser/dynamodb_util_test.py
+    - name: Test sqs_util
+      run: python3 collector_analyser/sqs_util_test.py
 
     - name: Copy Code files to EC2 and run them
       run: |
@@ -28,8 +34,11 @@ jobs:
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         SSH_OPTIONS="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa"
-        scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ./flask_api_v1.py ubuntu@${{ secrets.EC2_HOST }}:/home/ubuntu/
-                
+        scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa collector_analyser/*.py ubuntu@${{ secrets.EC2_HOST }}:/home/ubuntu/
+        scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ./requirements.txt ubuntu@${{ secrets.EC2_HOST }}:/home/ubuntu/ 
+        python3 flask_analyser.py
+        pkill gunicorn
+        # python3 flask_collector.py
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         EC2_HOST: ${{ secrets.EC2_HOST }}
