@@ -2,7 +2,7 @@ import unittest
 import boto3
 import json
 from moto import mock_aws
-from collector_analyser.sqs_util import send_message, receive_message
+from sqs_util import send_message, receive_message
 
 class TestSQSFunctions(unittest.TestCase):
     @mock_aws

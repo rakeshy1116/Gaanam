@@ -6,8 +6,8 @@ import requests
 # from flask_cors import CORS, cross_origin
 import boto3
 from datetime import datetime
-from collector_analyser.sqs_util import *
-from collector_analyser.dynamodb_util import *
+from sqs_util import *
+from dynamodb_util import *
 
 API_BASE_URL = 'https://api.spotify.com/v1/'
 

@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch, MagicMock
-from collector_analyser.flask_collector import read_sqs_message, get_topSong, create_playlist, get_topArtist
+from flask_collector import read_sqs_message, get_topSong, create_playlist, get_topArtist
 
 class TestFunctions(unittest.TestCase):
     @patch('flask_collector.receive_message')
