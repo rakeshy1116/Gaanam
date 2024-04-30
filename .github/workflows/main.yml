@@ -1,0 +1,35 @@
+name: Build and Deploy to AWS EC2
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Code Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup Python Environment
+      uses: actions/setup-python@v4 
+
+    - name: Install Dependencies
+      run: pip install -r requirements.txt
+
+    - name: Test Collector and Analyzer files
+      run: python3 flask_collector_test.py
+
+    - name: Copy Code files to EC2 and run them
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        SSH_OPTIONS="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa"
+        scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ./flask_api_v1.py ubuntu@${{ secrets.EC2_HOST }}:/home/ubuntu/
+                
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        EC2_HOST: ${{ secrets.EC2_HOST }}
