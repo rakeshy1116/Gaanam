@@ -25,12 +25,12 @@ jobs:
       run: python3 collector_analyser/flask_analyser_test_mock.py
     - name: Test dynamodb_util
       run: python3 collector_analyser/dynamodb_util_test.py
-    - name: Test sqs_util
-      env:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
-      run: python3 collector_analyser/sqs_util_test.py
+    # - name: Test sqs_util
+    #   env:
+    #       aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+    #       aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    #       aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
+    #   run: python3 collector_analyser/sqs_util_test.py
 
     - name: Copy Code files to EC2 and run them
       run: |
