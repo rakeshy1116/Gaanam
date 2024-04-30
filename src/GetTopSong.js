@@ -55,18 +55,19 @@ const GetTopSong = ({url}) => {
           <thead>
             <tr>
               <th> </th>
-              <th>Image</th>
-              <th>Song Name</th>
-              <th>Artist</th>
-              <th>Preview</th>
-              <th>Play</th>
+              <th data-testId="cypress-topSong-Image">Image</th>
+              <th data-testId="cypress-topSong-SongName" >Song Name</th>
+              <th data-testId="cypress-topSong-Artist">Artist</th>
+              <th data-testId="cypress-topSong-Preview">Preview</th>
+              <th data-testId="cypress-topSong-Play">Play</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody  data-testId="cypress-topSong-Table">
             {songData.map((song, index) => (
               <tr key={index}>
                 <td>
                 <button
+                   data-testId="cypress-topSong-AddButton"
                    style={{
                     borderRadius: '50%', // makes the button circular
                     width: '30px', // sets a fixed width
@@ -110,7 +111,7 @@ const GetTopSong = ({url}) => {
           </tbody>
         </table>   
       )}
-      <button
+      <button data-testid="cypress-addplaylist-button"
         style={{
           padding: '10px 20px', // adjusts the size of the button
           fontSize: '16px', // adjusts the font size

@@ -53,8 +53,8 @@ function InputDisplay() {
 
 
   const handleLogin= () => {
-    window.location.href = 'https://13.59.32.217/login';
-    // window.location.href = 'http://127.0.0.1:5000/login';
+    // window.location.href = 'https://13.59.32.217/login';
+    window.location.href = 'http://127.0.0.1:5000/login';
 
     // if (window.location.hash.includes('access_token')) {
     //   // If so, call props.onLogin to display the Dashboard
@@ -78,7 +78,7 @@ function InputDisplay() {
           {artistUrl && <a href={artistUrl}>Spotify Profile</a>}
         </div>
       )}
-      <button className="display-button" onClick={handleLogin}>Login with Spotify</button>
+      <button data-testid="cypress-test-button" className="display-button" onClick={handleLogin}>Login with Spotify</button>
     </div>
   );
 }

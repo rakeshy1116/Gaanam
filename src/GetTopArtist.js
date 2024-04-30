@@ -29,12 +29,12 @@ const GetTopArtist = ({url}) => {
         <table>
           <thead>
             <tr>
-              <th>Image</th>
-              <th>Artist Name</th>
-              <th>ID</th>
+              <th data-testid="cypress-topArtist-Image">Image</th>
+              <th data-testid="cypress-topArtist-ArtistName">Artist Name</th>
+              <th data-testid="cypress-topArtist-ID">ID</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody data-testid="cypress-topArtist-Table">
             {artistData.map((artist, index) => (
               <tr key={index}>
                 <td><img className="song-image" src={artist.image} alt={artist.name} /></td>

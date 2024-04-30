@@ -359,19 +359,19 @@ const Dashboard = () => {
   return (
     <div className='dashboard'>
       <nav>
-        <button onClick={handleSongsClick}>Show Top Songs</button>
-        <button onClick={handleArtistClick}>Show Top Artists</button>
+        <button data-testid="cypress-gettopSong" onClick={handleSongsClick}>Show Top Songs</button>
+        <button data-testid="cypress-gettopArtist" onClick={handleArtistClick}>Show Top Artists</button>
         {/* <button onClick={handleCreatePlaylist}>Top Genres</button>
         <button onClick={handleAddTracks}>Add Tracks to Playlist</button> */}
-        <button onClick={handleGetRecommendations}>Get Recommendations</button>
+        <button data-testid="cypress-getrecommendations" onClick={handleGetRecommendations}>Get Recommendations</button>
       </nav>
 
       {displayNavSongs && (
         <div>
           <nav>
-            <button onClick={handleSongsClick_4}>Last 4 weeks</button>
-            <button onClick={handleSongsClick_6}> Last 6 months</button>
-            <button onClick={handleSongsClick_12}>Last 12 months</button>
+            <button data-testid="cypress-gettopSong4weeks" onClick={handleSongsClick_4}>Last 4 weeks</button>
+            <button data-testid="cypress-gettopSong6months" onClick={handleSongsClick_6}> Last 6 months</button>
+            <button data-testid="cypress-gettopSong12months"onClick={handleSongsClick_12}>Last 12 months</button>
           </nav>
           
         </div>
@@ -379,18 +379,18 @@ const Dashboard = () => {
       {displayNavArtist && (
         <div>
           <nav>
-            <button onClick={handleArtistClick_4}>Last 4 weeks</button>
-            <button onClick={handleArtistClick_6}>Last 6 months</button>
-            <button onClick={handleArtistClick_12}>Last 12 months</button>
+            <button data-testid="cypress-gettopArtist4weeks" onClick={handleArtistClick_4}>Last 4 weeks</button>
+            <button data-testid="cypress-gettopArtist6months" onClick={handleArtistClick_6}>Last 6 months</button>
+            <button data-testid="cypress-gettopArtist12months" onClick={handleArtistClick_12}>Last 12 months</button>
           </nav>
         </div>
       )}
       {displayRecommendation && (
         <div>
           <nav>
-            <button onClick={handleGetRecommendations_4}>Last 4 weeks</button>
-            <button onClick={handleGetRecommendations_6}>Last 6 months</button>
-            <button onClick={handleGetRecommendations_12}>Last 12 months</button>
+            <button data-testid="cypress-getrecommendations4weeks" onClick={handleGetRecommendations_4}>Last 4 weeks</button>
+            <button data-testid="cypress-getrecommendations6months" onClick={handleGetRecommendations_6}>Last 6 months</button>
+            <button data-testid="cypress-getrecommendations12months"onClick={handleGetRecommendations_12}>Last 12 months</button>
           </nav>
         </div>
       )}
@@ -410,18 +410,18 @@ const Dashboard = () => {
       {displayComponent === 'recommendations_12' && <GetTopSong  url = {`http://127.0.0.1:5000/recommendations/long_term/${sessionStorage.getItem('user_id')}`}/>}
        */}
       {/* {displayComponent === 'songs' && <GetTopSong url = "http://127.0.0.1:5000/topSong/short_term" />} */}
-      {displayComponent === 'songs_4' && <GetTopSong url={`https://13.59.32.217/topSong/short_term/${sessionStorage.getItem('user_id')}`} />}
-      {displayComponent === 'songs_6' && <GetTopSong url = {`https://13.59.32.217/topSong/medium_term/${sessionStorage.getItem('user_id')}`}/>}
-      {displayComponent === 'songs_12' && <GetTopSong  url = {`https://13.59.32.217/topSong/long_term/${sessionStorage.getItem('user_id')}`}/>}
+      {displayComponent === 'songs_4' && <GetTopSong  url={`http://127.0.0.1:5000/topSong/short_term/${sessionStorage.getItem('user_id')}`} />}
+      {displayComponent === 'songs_6' && <GetTopSong url = {`http://127.0.0.1:5000/topSong/medium_term/${sessionStorage.getItem('user_id')}`}/>}
+      {displayComponent === 'songs_12' && <GetTopSong  url = {`http://127.0.0.1:5000/topSong/long_term/${sessionStorage.getItem('user_id')}`}/>}
 
       {/* {displayComponent === 'artists' && <GetTopArtist  url = "http://127.0.0.1:5000/topArtist/short_term"/>} */}
-      {displayComponent === 'artists_4' && <GetTopArtist  url = {`https://13.59.32.217/topArtist/short_term/${sessionStorage.getItem('user_id')}`}/>}
-      {displayComponent === 'artists_6' && <GetTopArtist  url = {`https://13.59.32.217/topArtist/medium_term/${sessionStorage.getItem('user_id')}`}/>}
-      {displayComponent === 'artists_12' && <GetTopArtist  url = {`https://13.59.32.217/topArtist/long_term/${sessionStorage.getItem('user_id')}`}/>}
+      {displayComponent === 'artists_4' && <GetTopArtist  url = {`http://127.0.0.1:5000/topArtist/short_term/${sessionStorage.getItem('user_id')}`}/>}
+      {displayComponent === 'artists_6' && <GetTopArtist  url = {`http://127.0.0.1:5000/topArtist/medium_term/${sessionStorage.getItem('user_id')}`}/>}
+      {displayComponent === 'artists_12' && <GetTopArtist  url = {`http://127.0.0.1:5000/topArtist/long_term/${sessionStorage.getItem('user_id')}`}/>}
 
-      {displayComponent === 'recommendations_4' && <GetTopSong  url = {`https://13.59.32.217/recommendations/short_term/${sessionStorage.getItem('user_id')}`}/>}
-      {displayComponent === 'recommendations_6' && <GetTopSong  url = {`https://13.59.32.217/recommendations/medium_term/${sessionStorage.getItem('user_id')}`}/>}
-      {displayComponent === 'recommendations_12' && <GetTopSong  url = {`https://13.59.32.217/recommendations/long_term/${sessionStorage.getItem('user_id')}`}/>}
+      {displayComponent === 'recommendations_4' && <GetTopSong  url = {`http://127.0.0.1:5000/recommendations/short_term/${sessionStorage.getItem('user_id')}`}/>}
+      {displayComponent === 'recommendations_6' && <GetTopSong  url = {`http://127.0.0.1:5000/recommendations/medium_term/${sessionStorage.getItem('user_id')}`}/>}
+      {displayComponent === 'recommendations_12' && <GetTopSong  url = {`http://127.0.0.1:5000/recommendations/long_term/${sessionStorage.getItem('user_id')}`}/>}
 
     
     </div>
